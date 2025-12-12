@@ -1,3 +1,9 @@
+/*
+  Course: MAD201
+  Lab: Assignment 6
+  Student: Darshilkumar Karkar (A00203357)
+  Description: Screen that fetches and displays the latest news articles.
+*/
 import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from "react-native";
 import { fetchNews } from "../api/newsApi";

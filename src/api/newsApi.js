@@ -1,3 +1,9 @@
+/*
+  Course: MAD201
+  Lab: Assignment 6
+  Student: Darshilkumar Karkar (A00203357)
+  Description: Module for fetching news data from the external API.
+*/
 import axios from "axios";
 
 // Fetch News Function

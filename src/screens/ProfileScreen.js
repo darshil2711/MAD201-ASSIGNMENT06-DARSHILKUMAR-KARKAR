@@ -1,3 +1,9 @@
+/*
+  Course: MAD201
+  Lab: Assignment 6
+  Student: Darshilkumar Karkar (A00203357)
+  Description: Screen displaying developer information and course details.
+*/
 import { StyleSheet, Text, View } from "react-native";
 
 export default function ProfileScreen() {
