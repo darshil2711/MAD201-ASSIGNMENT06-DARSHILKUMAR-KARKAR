@@ -1,50 +1,155 @@
-# Welcome to your Expo app 👋
+# News Reader App  
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Cross Platform Mobile Application Development  
+Assignment 6 – MAD201-01 (2025)
+**Student:** Darshilkumar Karkar  
+**Student ID:** A00203357  
+**Submission Date:** December 12, 2025
 
-## Get started
+## 📌 Overview
 
-1. Install dependencies
+This project is a **React Native News Reader App** that fetches real-time articles from a public API and allows users to save favorites locally using **AsyncStorage**.  
+It demonstrates modern mobile development concepts including API integration, state management, and persistent local storage.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🎯 Objectives
 
-   ```bash
-   npx expo start
-   ```
+This app teaches students how to:
 
-In the output, you'll find options to open the app in a
+- Fetch data from a REST API using **Axios** or **Fetch**
+- Render JSON data dynamically using **FlatList**
+- Manage asynchronous state changes with **useState** and **useEffect**
+- Save and retrieve data using **AsyncStorage**
+- Combine API data + local storage for an offline-friendly experience
+- Use **React Navigation** for multi-screen app structure
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📰 App Features
 
-## Get a fresh project
+### **Home Screen**
 
-When you're ready, run:
+- Fetches news articles on app load
+- Displays:
+  - Title
+  - Thumbnail image
+  - Short description
+- Tap an article → navigate to detail screen
 
-```bash
-npm run reset-project
-```
+Example fetch logic:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+```js
+useEffect(() => {
+  axios
+    .get('https://inshortsapi.vercel.app/news?category=technology')
+    .then(response => setArticles(response.data.data))
+    .catch(error => console.error(error));
+}, []);
+Detail Screen
+Shows full article:
 
-## Learn more
+Title, author, image, description
 
-To learn more about developing your project with Expo, look at the following resources:
+Includes "Save to Favorites" button
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Save logic:
 
-## Join the community
+js
+Copy code
+await AsyncStorage.setItem('@favorites', JSON.stringify(updatedFavorites));
+Favorites Screen
+Loads saved favorites from AsyncStorage:
 
-Join our community of developers creating universal apps.
+js
+Copy code
+const favorites = await AsyncStorage.getItem('@favorites');
+setSavedArticles(JSON.parse(favorites) || []);
+Displays saved articles in FlatList
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Allows users to remove items from favorites
+
+🧭 App Navigation
+Built with React Navigation (Bottom Tabs):
+
+Tab Purpose
+Home Displays real-time news feed
+Favorites Shows locally saved articles
+Profile Developer/About section
+
+🔄 State & Data Flow
+You may use:
+
+Option A: Context API
+For global favorites management.
+
+Option B: Local State + AsyncStorage
+For screen-level management.
+
+Example:
+
+js
+Copy code
+const [favorites, setFavorites] = useState([]);
+
+const addToFavorites = async (article) => {
+  const updated = [...favorites, article];
+  setFavorites(updated);
+  await AsyncStorage.setItem('@favorites', JSON.stringify(updated));
+};
+🎨 Styling
+Use a consistent stylesheet:
+
+js
+Copy code
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  button: {
+    backgroundColor: '#2196F3',
+    padding: 10,
+    borderRadius: 8,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontWeight: 'bold',
+  },
+});
+Follow standard Flexbox rules:
+
+flexDirection
+
+justifyContent
+
+alignItems
+
+✅ Deliverables
+Your app should:
+
+Fetch & display live news
+
+Show detailed view for each article
+
+Save/remove favorites with AsyncStorage
+
+Persist data even after restart
+
+Use bottom-tab navigation
+
+Apply clean, consistent styling
+
+📦 Tech Stack
+React Native
+
+React Navigation
+
+Axios / Fetch API
+
+AsyncStorage
+
+Context API (optional)
