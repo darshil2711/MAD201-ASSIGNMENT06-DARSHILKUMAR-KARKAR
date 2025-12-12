@@ -1,3 +1,9 @@
+/*
+  Course: MAD201
+  Lab: Assignment 6
+  Student: Darshilkumar Karkar (A00203357)
+  Description: Screen displaying the list of favorite articles saved by the user.
+*/
 import { useContext } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import ArticleCard from "../components/ArticleCard";

@@ -1,3 +1,9 @@
+/*
+  Course: MAD201
+  Lab: Assignment 6
+  Student: Darshilkumar Karkar (A00203357)
+  Description: Component to display a summary of a news article in a list.
+*/
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function ArticleCard({ item, onPress }) {

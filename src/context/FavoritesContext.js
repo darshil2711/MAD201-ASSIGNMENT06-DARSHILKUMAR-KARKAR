@@ -1,3 +1,9 @@
+/*
+  Course: MAD201
+  Lab: Assignment 6
+  Student: Darshilkumar Karkar (A00203357)
+  Description: Context provider for managing favorite articles using AsyncStorage.
+*/
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, useEffect, useState } from "react";
 
